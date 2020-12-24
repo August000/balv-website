@@ -1,0 +1,22 @@
+{
+  "name": "balv-website",
+  "version": "1.0.0",
+  "description": "BALV ecommerce",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/August000/balv-website.git"
+  },
+  "author": "Augusto Batista",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/August000/balv-website/issues"
+  },
+  "homepage": "https://github.com/August000/balv-website#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
