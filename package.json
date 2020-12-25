@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/August000/balv-website#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "express": "^4.17.1"
   }
 }
