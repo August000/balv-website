@@ -11,7 +11,7 @@ const reviewSchema = mongoose.Schema(
   }
 );
 
-const productsSchema = mongoose.Schema(
+const productSchema = mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -22,7 +22,7 @@ const productsSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    iamge: {
+    image: {
       type: String,
       required: true,
     },
