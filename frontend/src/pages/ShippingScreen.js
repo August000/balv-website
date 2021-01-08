@@ -2,23 +2,24 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FormContainer";
-import { saveShippingAdress } from "../actions/cartActions";
+import { saveShippingAddress } from "../actions/cartActions";
 import CheckoutSteps from "../components/CheckoutSteps";
 
 const ShippingScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart);
-  const { shippingAdress } = cart;
+  const { shippingAddress } = cart;
 
-  const [adress, setAdress] = useState(shippingAdress.adress);
-  const [city, setCity] = useState(shippingAdress.city);
-  const [country, setCountry] = useState(shippingAdress.country);
-  const [postalCode, setPostalCode] = useState(shippingAdress.postalCode);
+  const [address, setAddress] = useState(shippingAddress.address);
+  const [city, setCity] = useState(shippingAddress.city);
+  const [country, setCountry] = useState(shippingAddress.country);
+  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
 
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAdress({ adress, city, postalCode, country }));
+    console.log("is working");
+    dispatch(saveShippingAddress({ address, city, postalCode, country }));
     history.push("/payment");
   };
 
@@ -27,14 +28,14 @@ const ShippingScreen = ({ history }) => {
       <CheckoutSteps step1 step2 />
       <h1>Shipping</h1>
       <Form onSubmit={submitHandler}>
-        <Form.Group controlId="adress">
-          <Form.Label>Adress</Form.Label>
+        <Form.Group controlId="address">
+          <Form.Label>Address</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter adress"
-            value={adress}
+            placeholder="Enter address"
+            value={address}
             required
-            onChange={(e) => setAdress(e.target.value)}
+            onChange={(e) => setAddress(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId="city">

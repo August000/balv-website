@@ -4,8 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { Link } from "react-router-dom";
+import { createOrder } from "../actions/orderActions";
 
 const PlaceOrderScreen = () => {
+  const dispatch = useDispatch();
+
   const cart = useSelector((state) => state.cart);
 
   const addDecimals = (num) => {
@@ -28,7 +31,16 @@ const PlaceOrderScreen = () => {
   ).toFixed(2);
 
   const placeOrderHandler = () => {
-    console.log("order sumitted");
+    dispatch(
+      createOrder({
+        orderItems: cart.cartItems,
+        shippingAddress: cart.shippingAddress,
+        itemsPrice: cart.itemsPrice,
+        shippingPrice: cart.shippingPrice,
+        taxPrice: cart.taxPrice,
+        totalPrice: cart.totalPrice,
+      })
+    );
   };
 
   return (
@@ -40,9 +52,10 @@ const PlaceOrderScreen = () => {
             <ListGroup.Item>
               <h2>Shipping</h2>
               <p>
-                <strong>Adress: </strong>
-                {cart.shippingAdress.adress},{cart.shippingAdress.city},
-                {cart.shippingAdress.postalCode},{cart.shippingAdress.country},
+                <strong>Address: </strong>
+                {cart.shippingAddress.address},{cart.shippingAddress.city},
+                {cart.shippingAddress.postalCode},{cart.shippingAddress.country}
+                ,
               </p>
             </ListGroup.Item>
             <ListGroup.Item>
